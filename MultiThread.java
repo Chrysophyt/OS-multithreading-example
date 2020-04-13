@@ -33,7 +33,7 @@ class TextMonitor {
     TextMonitor(String text){
         printIterations = 0;
         currIterations = 0;
-        this.listofWords = Arrays.asList(text.split("\\W+"));
+        this.listofWords = Arrays.asList(text.split("\\s+"));
     }
 
     public int getprintIterations() { // get current iteration that need to be printed.
