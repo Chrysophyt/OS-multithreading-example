@@ -1,28 +1,31 @@
 import java.util.Arrays;
 import java.util.List;
 
-public class MultiThread {
+public class Tugas5 {
     public static void main(String[] args){
         System.out.println("Tugas Bab 5 - Pemrograman Multithreading \nChrystian|18/430257/PA/18770\n\n");      
 
+        //get input from args
         String testString = args[0];
+        System.out.println("Input string : "+testString);
         TextMonitor textMonitor = new TextMonitor(testString);
         MultithreadPrint.setTextMonitor(textMonitor);
+
+        //setup threads
         MultithreadPrint thread1 = new MultithreadPrint("Thread-1");
         MultithreadPrint thread2 = new MultithreadPrint("Thread-2");
         MultithreadPrint thread3 = new MultithreadPrint("Thread-3");
         MultithreadPrint thread4 = new MultithreadPrint("Thread-4");
+
+        //additional class untuk mengecek waktu dan progress
         ThreadTest benchmark = new ThreadTest("benchmark");
 
+        //mulai threads yang ada
         benchmark.start();
         thread1.start();
         thread2.start();
         thread3.start();
         thread4.start();
-
-        
-        
-        
     }
 }
 
@@ -30,6 +33,7 @@ class TextMonitor {
     private int currIterations;
     private int printIterations;
     private List<String> listofWords;
+    //constructor
     TextMonitor(String text){
         printIterations = 0;
         currIterations = 0;
@@ -73,7 +77,7 @@ class MultithreadPrint implements Runnable {
         System.out.println("Creating " + this.threadName);
     }
 
-    public static void setTextMonitor(TextMonitor tM){
+    public static void setTextMonitor(TextMonitor tM) {
         textMonitor = tM;
         result = "";
     }
